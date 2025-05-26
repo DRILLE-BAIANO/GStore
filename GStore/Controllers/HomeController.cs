@@ -34,14 +34,19 @@ public class HomeController : Controller
             .Include(p => p.Categoria)
             .Include(p => p.Fotos)
             .SingleOrDefault();
-
-        ProdutoVM produtoVM = new()
-        {
-            Produto = produto
+        
+        List<Produto> semelhantes = _db.Produtos
+            .Where(p => p.Id != id && p.CategoriaId == produto.CategoriaId)
+            .Include(p => p.Categoria)
+            .Include(p => p.Fotos)
+            .Take(4)
+            .ToList();
+        
+        ProdutoVM produtoVM = new() {
+            Produto = produto,
+            Semelhantes = semelhantes
         };
-        produtoVM.Produtos = _db.Produtos
-            .Where(p => p.CategoriaId == produto.CategoriaId && p.Id != produto.Id
-            ).Take(4).Include(p => p.Fotos).ToList();
+        
         return View(produtoVM);
     }
 

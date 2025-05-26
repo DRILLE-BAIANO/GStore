@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace GStore.Controllers;
 
 [Authorize(Roles = "Administrador")]
-
 public class AdminController : Controller
 {
     private readonly ILogger<AdminController> _logger;

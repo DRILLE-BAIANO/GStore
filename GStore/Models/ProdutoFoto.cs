@@ -3,23 +3,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GStore.Models;
 
-[Table("produto_foto")]
+[Table("ProdutoFoto")]
 public class ProdutoFoto
 {
     [Key]
     public int Id { get; set; }
 
+    [Display(Name = "Produto")]
     [Required(ErrorMessage = "Por favor, informe o Produto")]
     public int ProdutoId { get; set; }
-    [ForeignKey(nameof(ProdutoId))]
+    [ForeignKey("ProdutoId")]
     public Produto Produto { get; set; }
 
-    [Required]
-    [StringLength(300)]
-    [Display(Name = "Arquivo da Foto")]
+    [StringLength(200)]
+    [Display(Name = "Foto")]
+    [Required(ErrorMessage = "Por favor, selecione a Foto")]
     public string ArquivoFoto { get; set; }
 
     [Display(Name = "Descrição")]
-    [StringLength(30, ErrorMessage = "A Descrição deve possuir no máximo 30 caracteres")]
     public string Descricao { get; set; }
 }

@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Mysqlx;
 
 namespace GStore.Models;
 
@@ -23,19 +22,23 @@ public class Produto
     [StringLength(1000, ErrorMessage = "A Descrição deve possuir no máximo 1000 caracteres")]
     public string Descricao { get; set; }
 
-    [Required]
+    [Display(Name = "Quantidade em Estoque")]
     [Range(0, int.MaxValue)]
-    public int QtdeEstoque { get; set; } = 0;
+    [Required(ErrorMessage = "Por favor, informe a Quantidade em Estoque")]
+    public int QtdeEstoque { get; set; }
 
+    [Display(Name = "Valor de Custo")]
     [Range(0, double.MaxValue)]
     [Column(TypeName = "numeric(10,2)")]
-    public decimal ValorCusto { get; set; } = 0;
+    public decimal ValorCusto { get; set; }
 
+    [Display(Name = "Valor de Venda")]
     [Range(0, double.MaxValue)]
     [Column(TypeName = "numeric(10,2)")]
     public decimal ValorVenda { get; set; }
 
-    public bool Destaque { get; set; } = false;
+    public bool Destaque { get; set; }
 
     public List<ProdutoFoto> Fotos { get; set; }
+
 }

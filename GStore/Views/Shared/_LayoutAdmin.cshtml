@@ -20,8 +20,8 @@
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" asp-controller="Admin" asp-action="Index">GStore</a>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 fs-4" id="sidebarToggle" href="#!"><i
-                class="fas fa-bars"></i></button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars fs-4"></i></button>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
@@ -43,7 +43,7 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <a class="nav-link" asp-controller="Admin" asp-action="Index">
+                        <a class="nav-link mt-3" asp-controller="Admin" asp-action="Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -89,7 +89,6 @@
         crossorigin="anonymous"></script>
     <script src="~/js/scripts.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <partial name="_Notifications"></partial>
 </body>
 
 </html>
